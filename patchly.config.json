@@ -1,0 +1,15 @@
+{
+  "repo": "",
+  "baseBranch": "main",
+  "defaultModel": "gpt-4o-mini",
+  "prLabels": ["patchly", "automation"],
+  "docs": {
+    "readme": true,
+    "contributing": true
+  },
+  "scanning": {
+    "vulnerabilities": true,
+    "licenses": true
+  }
+}
+

@@ -1,0 +1,59 @@
+{
+  "name": "patchly",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Patchly monorepo: web UI + Express API to prepare repos for open source.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c cyan,magenta \"npm:dev --workspace apps/server\" \"npm:dev --workspace apps/web\"",
+    "build": "npm run build --workspace apps/server && npm run build --workspace apps/web",
+    "start": "npm run start --workspace apps/server",
+    "typecheck": "npm run typecheck --workspace apps/server && npm run typecheck --workspace apps/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "typescript": "^5.5.4"
+  }
+}
+{
+  "name": "patchly",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Patchly: turn your codebase into a production-ready open source project. CLI and library.",
+  "bin": {
+    "patchly": "dist/bin/patchly.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "node --loader ts-node/esm src/bin/patchly.ts",
+    "lint": "echo 'Add ESLint and config'",
+    "start": "node dist/bin/patchly.js",
+    "test": "echo 'No tests yet' && exit 0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "@yarnpkg/lockfile": "^1.1.0",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.57.0",
+    "spdx-correct": "^3.2.0",
+    "spdx-expression-parse": "^4.0.0",
+    "spdx-license-ids": "^3.0.17",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
+
